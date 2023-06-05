@@ -1,0 +1,44 @@
+.Button {
+  cursor: pointer;
+  color: #fff;
+  display: inline-flex;
+  transition-property: background-color, border-color, color, fill, stroke;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border-radius: 0.375rem;
+}
+
+.clear_theme {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.default_theme {
+  background-color: var(--primary-color);
+}
+
+.default_size {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 2.5rem;
+}
+
+.sm_size {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.lg_size {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: 2.75rem;
+  border-radius: 0.375rem;
+}
