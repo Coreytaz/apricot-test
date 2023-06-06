@@ -1,0 +1,53 @@
+.AccordionItem {
+  border-bottom-width: 1px;
+}
+
+.AccordionTrigger {
+  border-radius: 2px;
+  display: flex;
+  transition-property: all;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  border: none;
+  font-weight: 500;
+  flex: 1 1 0%;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  & > svg {
+    transform: rotate(-90deg);
+  }
+
+  &[data-state='open'] > svg {
+    transform: rotate(-180deg);
+  }
+}
+
+.ChevronDown {
+  transition-property: transform;
+  transition-duration: 200ms;
+  width: 1rem;
+  height: 1rem;
+}
+
+.AccordionContent {
+  overflow: hidden;
+  transition-property: all;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0 3rem;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+
+  &data-[state='closed'] {
+  }
+}
+
+.AccordionContentChildren {
+  padding-top: 0;
+  padding-bottom: 1rem;
+}
+
+.flex {
+  display: flex;
+}
