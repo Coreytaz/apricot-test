@@ -13,6 +13,8 @@
 .wrapper {
   padding: 2rem;
   margin-top: 2rem;
+  transition: all 1s linear;
+  opacity: 1;
 }
 
 .switchers {
@@ -34,4 +36,10 @@
   &_arrow {
     transform: rotate(180deg);
   }
+}
+
+.hide {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.1s linear;
 }

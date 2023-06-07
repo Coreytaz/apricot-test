@@ -1,12 +1,15 @@
 .Root {
+  cursor: pointer;
   width: 1.2rem;
   height: 1.2rem;
+  appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
   border-radius: 2px;
-  border-width: 2px;
-  border-color: var(--ring-color);
+  border: 2px solid var(--ring-color);
   background: transparent;
   &:focus-visible {
-    box-shadow: 1px 0 0 0 calc(2px + 2px) var(--ring-color);
+    box-shadow: 0 0 0 2px var(--ring-color);
     outline: 0;
   }
   &:disabled {
@@ -14,6 +17,7 @@
     opacity: 0.5;
   }
   &[data-state='checked'] {
+    border-color: var(--secondary-color);
     background-color: var(--secondary-color);
   }
 }

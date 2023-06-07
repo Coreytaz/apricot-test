@@ -6,7 +6,7 @@
   border-radius: 2px;
   display: flex;
   transition-property: all;
-  background-color: var(--bg-color);
+  background-color: transparent;
   color: var(--primary-color);
   border: none;
   font-weight: 500;
@@ -18,6 +18,9 @@
     transform: rotate(-90deg);
   }
 
+  &[data-state='open'] {
+    background-color: var(--bg-color);
+  }
   &[data-state='open'] > svg {
     transform: rotate(-180deg);
   }
@@ -35,7 +38,8 @@
   transition-property: all;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  padding: 0 3rem;
+  padding: 0 1rem;
+  padding-right: 0;
   background-color: var(--bg-color);
   color: var(--primary-color);
 
