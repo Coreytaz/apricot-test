@@ -1,55 +1,56 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
+import cn from 'clsx'
+import { observer } from 'mobx-react-lite'
 
-import { TodoItem } from '~entities/todo/TodoItem'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Checkbox, Label } from '~shared/ui'
+import { todoStore } from '~entities/todo/model'
 
-import { Accordion } from '~shared/ui'
+import { Todos } from '../model'
 
-export interface Todos {
-    id: number;
-    text: string;
-    completed: boolean;
-    children: Todos[];
-}
+import cls from './styles.module.scss'
 
-export const TodoList: FC = () => {
-    const [todos, setTodos] = useState<Todos[]>([
-        {
-            id: 1,
-            text: "Task 1",
-            completed: false,
-            children: [
-                {
-                    id: 2,
-                    text: "Subtask 1.1",
-                    completed: false,
-                    children: []
-                },
-                {
-                    id: 3,
-                    text: "Subtask 1.2",
-                    completed: false,
-                    children: [
-                        {
-                            id: 4,
-                            text: "Subsubtask 1.2.1",
-                            completed: false,
-                            children: []
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            id: 5,
-            text: "Task 2",
-            completed: false,
-            children: []
-        }
-    ]);
+export const TodoList: FC = observer(() => {
+    const todos = todoStore.todos
+
+    const renderTodo = (todo: Todos) => (
+        <AccordionItem value={`item-${todo.id}`}>
+            {todo.children.length > 0 ?
+                <>
+                    <AccordionTrigger>
+                        <div className={cls.wrapperCheckbox}>
+                            <Label htmlFor={todo.id.toString()}>{todo.text}</Label>
+                            <Checkbox
+                                id={todo.id.toString()}
+                                checked={todo.completed}
+                                onCheckedChange={() => todoStore.handleCheckboxChange(todo)} />
+                        </div>
+                    </AccordionTrigger>
+                    {todo.children.length > 0 && (
+                        <AccordionContent>
+                            <Accordion type="single" collapsible className="w-full">
+                                {todo.children.map((child: Todos) => renderTodo(child))}
+                            </Accordion>
+                        </AccordionContent>
+                    )
+                    }
+                </> :
+                <>
+                    <div className={cn(cls.wrapperCheckbox, cls.AccordionTrigger)}>
+                        <Label htmlFor={todo.id.toString()}>{todo.text}</Label>
+                        <Checkbox
+                            id={todo.id.toString()}
+                            checked={todo.completed}
+                            onCheckedChange={() => todoStore.handleCheckboxChange(todo)}
+                        />
+                    </div>
+                </>
+            }
+        </AccordionItem >
+    );
 
     return (
         <Accordion type="single" collapsible className="w-full">
-            <TodoItem todos={todos} setTodos={setTodos} />
-        </Accordion >
-    )
-}
+            {todos.map((todo) => renderTodo(todo))}
+        </Accordion>
+    );
+});

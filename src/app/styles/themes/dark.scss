@@ -1,10 +1,10 @@
-.app.dark {
+html[data-theme='dark'] {
   --bg-color: #151619;
   --inverted-bg-color: #22242a;
-  --ring-color: #D9D9D9;
+  --ring-color: #d9d9d9;
   --primary-color: #ffffff;
   --secondary-color: #4788f6;
-  --inverted-primary-color: #0232c2;
+  --accent-color: #33b369;
   --inverted-secondary-color: #0452ff;
   --svg-color: #fff;
 }

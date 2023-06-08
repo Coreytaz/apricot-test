@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useLayoutEffect } from 'react';
 
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
 
@@ -9,6 +9,10 @@ interface UseThemeResult {
 
 export function useTheme(): UseThemeResult {
   const { theme, setTheme } = useContext(ThemeContext);
+
+  useLayoutEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme!);
+  }, [theme]);
 
   useEffect(() => {
     const newTheme =

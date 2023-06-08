@@ -1,10 +1,10 @@
-:root {
+html[data-theme="light"] {
   --bg-color: #dce0e1;
   --inverted-bg-color: #fff;
   --ring-color: #c2bfbf;
   --primary-color: #000000;
   --secondary-color: #4788f6;
-  --inverted-primary-color: #049604;
-  --inverted-secondary-color: #04ff04;
+  --accent-color: #33b369;
+  --inverted-secondary-color: #33b369;
   --svg-color: #000;
 }

@@ -1,0 +1,148 @@
+.Portal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  justify-content: center;
+  align-items: flex-start;
+  @media (min-width: 640px) {
+    align-items: center;
+  }
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  transition-property: all;
+  transition-duration: 100ms;
+
+  &[data-state='closed'] {
+    animation: fadeOut ease 0.3s;
+  }
+  &[data-state='open'] {
+    animation: fadeIn ease 0.3s;
+  }
+}
+
+.DialogContent {
+  display: grid;
+  position: fixed;
+  z-index: 50;
+  padding: 1.5rem;
+  width: 100%;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-width: 1px;
+  gap: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background-color: var(--inverted-bg-color);
+  color: var(--primary-color);
+  &[data-state='open'] {
+    animation: fadeIn ease 0.3s;
+  }
+  & .Close {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    transition-property: opacity;
+    border-radius: 0.125rem;
+    opacity: 0.7;
+    & > span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+    &:hover {
+      opacity: 1;
+    }
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px var(--ring-color);
+    }
+    &:disabled {
+      pointer-events: none;
+    }
+    &[data-state='open'] {
+      background-color: var(--accent-color);
+    }
+  }
+
+  @media (min-width: 640px) {
+    max-width: 32rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.X {
+  color: var(--primary-color);
+  width: 1rem;
+  height: 1rem;
+}
+
+.DialogHeader {
+  display: flex;
+  margin-top: 0.375rem;
+  text-align: center;
+  flex-direction: column;
+
+  @media (min-width: 640px) {
+    text-align: left;
+  }
+}
+
+.DialogFooter {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @media (min-width: 640px) {
+    margin-left: 0.5rem;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.DialogTitle {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.DialogDescription {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

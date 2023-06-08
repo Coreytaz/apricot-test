@@ -1,2 +1,2 @@
-export * from './TodoItem';
-export * from './todoList';
+export * from './TodoList';
+export * from './model';
