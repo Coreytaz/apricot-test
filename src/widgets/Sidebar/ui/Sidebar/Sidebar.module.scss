@@ -1,9 +1,13 @@
 .Sidebar {
   height: 100vh;
-  width: var(--sidebar-width);
+  width: 100%;
+  max-width: var(--sidebar-width);
   background: var(--inverted-bg-color);
   position: relative;
   transition: width 0.3s;
+  @media (max-width: 768px) {
+    position: fixed;
+  }
 }
 
 .collapsed {
@@ -23,6 +27,24 @@
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.navTodo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  @media (max-width: 425px) {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    & input {
+      grid-row-start: 2;
+      grid-column-start: 1;
+      grid-row-end: 3;
+      grid-column-end: 3;
+    }
+  }
 }
 
 .lang {
