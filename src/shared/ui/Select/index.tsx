@@ -1,10 +1,8 @@
 import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
-
 import cn from "clsx"
 
-import { ReactComponent as Check } from "~shared/assets/icons/check.svg"
-import { ReactComponent as ChevronDown } from "~shared/assets/icons/ChevronDown.svg"
+import { Check, ChevronDown } from "~shared/assets"
 
 import cls from './Select.module.scss'
 

@@ -1,9 +1,8 @@
 import * as React from "react"
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
-
 import cn from "clsx"
 
-import { ReactComponent as Check } from "~shared/assets/icons/check.svg"
+import { Check } from "~shared/assets"
 
 import clx from './Checkbox.module.scss'
 

@@ -2,7 +2,7 @@ import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import cn from "clsx"
 
-import { ReactComponent as X } from "~shared/assets/icons/X.svg"
+import { X } from "~shared/assets"
 
 import cls from "./Dialog.module.scss"
 

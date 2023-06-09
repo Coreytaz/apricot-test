@@ -1,9 +1,7 @@
 import cn from 'clsx'
 
 import { Theme, useTheme } from '~app/providers/ThemeProvider';
-
-import { ReactComponent as DarkIcon } from '~shared/assets/icons/theme-dark.svg'
-import { ReactComponent as LightIcon } from '~shared/assets/icons/theme-light.svg'
+import { Moon, Son } from '~shared/assets';
 import { Button } from '~shared/ui';
 
 interface ThemeSwitcherProps {
@@ -19,7 +17,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
             className={cn(className)}
             onClick={toggleTheme}
         >
-            {theme === Theme.DARK ? <LightIcon /> : <DarkIcon />}
+            {theme === Theme.DARK ? <Son /> : <Moon />}
         </Button>
     );
 };

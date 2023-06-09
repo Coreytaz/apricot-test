@@ -1,9 +1,8 @@
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-
 import cn from 'clsx'
 
-import { ReactComponent as ChevronDown } from "~shared/assets/icons/ChevronDown.svg"
+import { ChevronDown } from "~shared/assets";
 
 import cls from './Acordion.module.scss';
 
