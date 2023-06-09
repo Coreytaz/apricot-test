@@ -1,11 +1,22 @@
+import { observer } from 'mobx-react-lite';
 import { FC } from 'react';
 
-const MainPage: FC = () => {
+import { todoStore } from '~entities/todo';
+import { CardTodo } from '~entities/CardTodo';
+
+import cls from './MainPage.module.scss'
+
+const MainPage: FC = observer(() => {
 
     return (
-        <div>
-        </div>
+        <div className={cls.main}>
+            {
+                todoStore.getAllCompletedTodo.map((todo) => (
+                    <CardTodo key={todo.id} {...todo} />
+                ))
+            }
+        </div >
     );
-};
+});
 
 export default MainPage;

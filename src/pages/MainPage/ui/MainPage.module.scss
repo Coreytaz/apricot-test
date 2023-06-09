@@ -1,0 +1,12 @@
+.main {
+  padding: 1rem;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  @media (max-width: 768px) {
+    margin-left: var(--sidebar-width-collapsed);
+  }
+}
