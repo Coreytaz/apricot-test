@@ -1,12 +1,53 @@
 import { makeAutoObservable } from 'mobx';
+import { makePersistable } from 'mobx-persist-store';
 
 import { Todos } from '../TodoList';
 
 class TodoStore {
-  todos: Todos[] = [];
+  search: string = '';
+  todos: Todos[] = [
+    {
+      id: 1,
+      text: 'Task 1',
+      completed: false,
+      children: [
+        {
+          id: 2,
+          text: 'Subtask 1.1',
+          completed: false,
+          children: [],
+        },
+        {
+          id: 3,
+          text: 'Subtask 1.2',
+          completed: false,
+          children: [
+            {
+              id: 4,
+              text: 'Subsubtask 1.2.1',
+              completed: false,
+              children: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 5,
+      text: 'Task 2',
+      completed: false,
+      children: [],
+    },
+  ];
 
   constructor() {
     makeAutoObservable(this);
+
+    makePersistable(this, {
+      name: 'todoStore',
+      properties: ['todos'],
+      storage: window.localStorage,
+    });
   }
 
   handleCheckboxChange(todo: Todos) {
@@ -25,12 +66,26 @@ class TodoStore {
     });
   }
 
+  setSearch(search: string) {
+    this.search = search;
+  }
+
   deleteTodos() {
     this.findCompletedAndDeleteTodo(this.todos);
   }
 
+  get todoList() {
+    return this.findAllTasksByText(this.todos, this.search);
+  }
+
   get getSelectTodo() {
-    return this.flattenTasks(this.todos);
+    return this.flattenTasks(this.todos, () => true);
+  }
+
+  get getAllCompletedTodo() {
+    return this.flattenTasks(this.todos, (task) =>
+      task.completed === true && task.children.length === 0 ? true : false
+    );
   }
 
   addTodo(newTodos: Todos, todoId: number | null) {
@@ -57,14 +112,40 @@ class TodoStore {
     }
   }
 
-  private flattenTasks(tasks: Todos[]) {
+  private findAllTasksByText(tasks: Todos[], searchText: string) {
+    if (searchText === '') {
+      return tasks;
+    }
+
+    const foundTasks = [];
+
+    for (const task of tasks) {
+      if (task.text.includes(searchText)) {
+        foundTasks.push(task);
+      }
+
+      if (task.children && task.children.length > 0) {
+        const foundChildTasks = this.findAllTasksByText(task.children, searchText) as Todos[];
+
+        if (foundChildTasks.length > 0) {
+          foundTasks.push(...foundChildTasks);
+        }
+      }
+    }
+
+    return foundTasks;
+  }
+
+  private flattenTasks(tasks: Todos[], condition?: (task: Todos) => boolean) {
     let flattenedTasks: Todos[] = [];
 
     tasks.forEach((task) => {
-      flattenedTasks.push(task);
+      if (condition && condition(task)) {
+        flattenedTasks.push(task);
+      }
 
       if (task.children.length > 0) {
-        const childrenTasks = this.flattenTasks(task.children);
+        const childrenTasks = this.flattenTasks(task.children, condition);
         flattenedTasks = flattenedTasks.concat(childrenTasks);
       }
     });

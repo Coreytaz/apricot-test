@@ -10,10 +10,10 @@ import { Todos } from '../model'
 import cls from './styles.module.scss'
 
 export const TodoList: FC = observer(() => {
-    const todos = todoStore.todos
+    const todos = todoStore.todoList
 
     const renderTodo = (todo: Todos) => (
-        <AccordionItem value={`item-${todo.id}`}>
+        <AccordionItem key={todo.id} value={`item-${todo.id}`}>
             {todo.children.length > 0 ?
                 <>
                     <AccordionTrigger>
@@ -50,7 +50,7 @@ export const TodoList: FC = observer(() => {
 
     return (
         <Accordion type="single" collapsible className="w-full">
-            {todos.map((todo) => renderTodo(todo))}
+            {todos?.length! > 0 ? todos?.map((todo) => renderTodo(todo)) : <div style={{ textAlign: 'center', marginTop: '1rem' }}>Не удалось найти To-Do</div>}
         </Accordion>
     );
 });
