@@ -1,4 +1,4 @@
-import React, { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import { useEffect, useState } from 'react';
 
 import useCurrentState from '../useCurrentState';
 
@@ -6,19 +6,46 @@ export type BindingsChangeTarget =
   | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   | string;
 
-const useInput = (
-  initialValue: string
-): {
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
-  currentRef: MutableRefObject<string>;
-  reset: () => void;
-  bindings: {
-    value: string;
-    onChange: (event: BindingsChangeTarget) => void;
+type validProps = {
+  isEmpty?: boolean;
+};
+
+export const useValid = (value: any, validators: validProps) => {
+  const [empty, setEmpty] = useState(true);
+  const [inputValid, setInputValid] = useState(false);
+
+  useEffect(() => {
+    for (const valid in validators) {
+      switch (valid) {
+        case 'isEmpty':
+          value ? setEmpty(false) : setEmpty(true);
+          break;
+      }
+    }
+  }, [validators, value]);
+
+  useEffect(() => {
+    if (empty) {
+      setInputValid(false);
+    } else {
+      setInputValid(true);
+    }
+  }, [empty]);
+
+  return {
+    empty,
+    inputValid,
   };
-} => {
+};
+
+const useInput = (initialValue: string, validations: validProps) => {
   const [value, setValue, currentRef] = useCurrentState<string>(initialValue);
+  const valid = useValid(value, validations);
+  const [isDirty, setDirty] = useState(false);
+
+  const onBlur = () => {
+    setDirty(true);
+  };
 
   return {
     value,
@@ -34,6 +61,9 @@ const useInput = (
           setValue(event as string);
         }
       },
+      isDirty,
+      onBlur,
+      ...valid,
     },
   };
 };
