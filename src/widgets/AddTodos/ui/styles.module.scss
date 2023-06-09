@@ -1,0 +1,15 @@
+.body {
+  display: grid;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+.item {
+  margin-bottom: 1rem;
+}
+
+.inputError {
+  color: red;
+  position: absolute;
+}
