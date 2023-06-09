@@ -1,8 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import { makePersistable } from 'mobx-persist-store';
 
-import { Todos } from '../TodoList';
-
+import { Todos } from '../TodoList/model';
 class TodoStore {
   search: string = '';
   todos: Todos[] = [

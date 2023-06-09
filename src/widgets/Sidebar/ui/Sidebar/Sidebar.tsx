@@ -4,12 +4,11 @@ import { observer } from 'mobx-react-lite';
 
 import { ThemeSwitcher } from '~widgets/ThemeSwitcher';
 import { Button } from '~shared/ui';
-import { TodoList } from '~entities/todo';
 import { Chevron } from '~shared/assets';
 import { DeleteTodos } from '~widgets/DeleteTodos';
 import { AddTodos } from '~widgets/AddTodos';
-
 import { SearchTodo } from '~widgets/SearchTodo';
+import { TodoList } from '~entities/todo/TodoList';
 
 import cls from './Sidebar.module.scss';
 
