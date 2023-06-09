@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { FC } from 'react'
 
-import { todoStore } from '~entities/todo'
+import { todoStore } from '~entities/todoStore'
 import useInput from '~shared/hook/useInput'
 import { Input } from '~shared/ui'
 

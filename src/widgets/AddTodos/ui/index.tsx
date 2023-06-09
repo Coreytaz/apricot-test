@@ -1,10 +1,10 @@
 import { observer } from 'mobx-react-lite'
 import { FC } from 'react'
 
-import { todoStore } from '~entities/todo'
 import { PlusSquare } from '~shared/assets'
 import useInput from '~shared/hook/useInput'
 import { Button, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Input, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue, Textarea } from '~shared/ui'
+import { todoStore } from '~entities/todoStore'
 
 import cls from './styles.module.scss'
 

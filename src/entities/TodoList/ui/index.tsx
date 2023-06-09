@@ -3,7 +3,7 @@ import cn from 'clsx'
 import { observer } from 'mobx-react-lite'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Checkbox, Label } from '~shared/ui'
-import { todoStore } from '~entities/todo/model'
+import { todoStore } from '~entities/todoStore'
 
 import { Todos } from '../model'
 

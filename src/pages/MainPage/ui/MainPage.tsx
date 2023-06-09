@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import { FC } from 'react';
 
-import { todoStore } from '~entities/todo';
 import { CardTodo } from '~entities/CardTodo';
+import { todoStore } from '~entities/todoStore';
 
 import cls from './MainPage.module.scss'
 

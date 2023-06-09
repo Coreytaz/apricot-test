@@ -8,7 +8,7 @@ import { Chevron } from '~shared/assets';
 import { DeleteTodos } from '~widgets/DeleteTodos';
 import { AddTodos } from '~widgets/AddTodos';
 import { SearchTodo } from '~widgets/SearchTodo';
-import { TodoList } from '~entities/todo/TodoList';
+import { TodoList } from '~entities/TodoList';
 
 import cls from './Sidebar.module.scss';
 

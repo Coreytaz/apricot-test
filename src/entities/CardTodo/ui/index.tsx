@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Todos } from '~entities/todo/TodoList'
+import { Todos } from '~entities/TodoList'
 
 import cls from './styles.module.scss'
 
