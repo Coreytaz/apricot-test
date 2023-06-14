@@ -22,7 +22,7 @@ export const TodoList: FC = observer(() => {
                             <Checkbox
                                 id={todo.id.toString()}
                                 checked={todo.completed}
-                                onCheckedChange={() => todoStore.handleCheckboxChange(todo)} />
+                                onChange={() => todoStore.handleCheckboxChange(todo)} />
                         </div>
                     </AccordionTrigger>
                     {todo.children.length > 0 && (
@@ -40,7 +40,7 @@ export const TodoList: FC = observer(() => {
                         <Checkbox
                             id={todo.id.toString()}
                             checked={todo.completed}
-                            onCheckedChange={() => todoStore.handleCheckboxChange(todo)}
+                            onChange={() => todoStore.handleCheckboxChange(todo)}
                         />
                     </div>
                 </>

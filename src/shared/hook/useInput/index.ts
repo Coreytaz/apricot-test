@@ -51,7 +51,10 @@ const useInput = (initialValue: string, validations: validProps) => {
     value,
     setValue,
     currentRef,
-    reset: () => setValue(initialValue),
+    reset: () => {
+      setValue(initialValue);
+      setDirty(false);
+    },
     bindings: {
       value,
       onChange: (event: BindingsChangeTarget) => {

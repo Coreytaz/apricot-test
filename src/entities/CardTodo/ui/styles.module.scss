@@ -4,7 +4,7 @@
   border-radius: 0.5rem;
   border-width: 1px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  height: 200px;
+  min-height: 200px;
   max-width: 300px;
   & > div {
     &:first-child {

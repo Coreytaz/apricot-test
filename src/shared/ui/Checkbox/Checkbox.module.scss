@@ -1,35 +1,37 @@
 .Root {
+  position: relative;
   cursor: pointer;
-  width: 1.2rem;
   height: 1.2rem;
-  appearance: none;
+  width: 1.2rem;
+  margin-right: 0.7rem;
   appearance: none;
   -webkit-appearance: none;
-  border-radius: 2px;
-  border: 2px solid var(--ring-color);
-  background: transparent;
-  &:focus-visible {
-    box-shadow: 0 0 0 2px var(--ring-color);
-    outline: 0;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0 2px var(--primary-color);
+
+  &:hover {
+    border-width: 0;
   }
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-  &[data-state='checked'] {
-    border-color: var(--secondary-color);
+
+  &:checked {
+    box-shadow: 0 0 0 2px var(--secondary-color);
     background-color: var(--secondary-color);
+    border-width: 0;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid var(--primary-color);
+      border-radius: 0.1rem;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
   }
-}
-
-.Indicator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.Check {
-  width: 1rem !important;
-  height: 1rem !important;
-  color: #fff !important;
 }

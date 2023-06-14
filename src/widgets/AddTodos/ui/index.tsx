@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import { PlusSquare } from '~shared/assets'
 import useInput from '~shared/hook/useInput'
@@ -9,6 +9,7 @@ import { todoStore } from '~entities/todoStore'
 import cls from './styles.module.scss'
 
 export const AddTodos: FC = observer(() => {
+    const [open, setOpen] = useState(false);
     const {
         reset: resetTask,
         bindings: bindingsTask,
@@ -39,10 +40,11 @@ export const AddTodos: FC = observer(() => {
         resetTask()
         resetDesc()
         bindingsSelectTask.onChange('')
+        setOpen(false)
     }
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button theme='clear'><PlusSquare /></Button>
             </DialogTrigger>
