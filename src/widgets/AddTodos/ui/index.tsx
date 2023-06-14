@@ -63,7 +63,7 @@ export const AddTodos: FC = observer(() => {
                         )}
                     </div>
                     <div className={cls.item}>
-                        <Textarea placeholder="Введите свое описание здесь." {...bindingsDesc} />
+                        <Textarea placeholder="Введите свое описание здесь." style={{ resize: 'none' }} {...bindingsDesc} />
                     </div>
                     <div className={cls.item}>
                         <Select value={bindingsSelectTask.value} onValueChange={bindingsSelectTask.onChange}>
